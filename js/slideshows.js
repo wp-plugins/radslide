@@ -40,13 +40,18 @@ function radslide_slideshows_settings(id) {
 		success: function(data) {
 			jQuery("#radslide").html(data);
 			
-			// make the template textarea use bespin
-			var bespin_editor;
-			bespin.useBespin(document.getElementById("radslide-template"), {
-				"syntax": "html"
-			}).then(function(env){
-				bespin_editor = env.editor; 
+			// set up codemirror code editor
+			var cm_url = siteurl+'/wp-content/plugins/radslide/vendor/codemirror';
+			var editor = CodeMirror.fromTextArea('radslide-template', {
+				height: "350px",
+				parserfile: cm_url+"/js/parsexml.js",
+				stylesheet: cm_url+"/css/xmlcolors.css",
+				path: cm_url+"/js/",
+				continuousScanning: 500,
+				lineNumbers: false
 			});
+			jQuery('.CodeMirror-wrapping iframe').css('border', '1px solid #DFDFDF');
+			jQuery('.CodeMirror-wrapping iframe').css('background-color', '#FFFFFF');
 
 			// intercept button clicks
 			jQuery(".button-primary").click(function(){
@@ -59,7 +64,7 @@ function radslide_slideshows_settings(id) {
 				}
 				// edit slideshow button
 				else if(id == 'radslide_edit') {
-					jQuery('#radslide-template').html(bespin_editor.value);
+					jQuery('#radslide-template').html(editor.getCode());
 					jQuery('#radslide_loading').show();
 					radslide_slideshows_settings_edit();
 				}
@@ -116,15 +121,19 @@ function radslide_slideshows_populate() {
 			// have slideshow index, display it
 			jQuery('#radslide').html(data);
 
-			// make the template textarea use bespin
-			var bespin_editor;
-			bespin.useBespin(document.getElementById("radslide_add-template"), {
-				"syntax": "html"
-			}).then(function(env){
-				bespin_editor = env.editor; 
-				// set up the add form's toggler
-				radslide_add_toggle_setup();
+			// set up codemirror code editor
+			var cm_url = siteurl+'/wp-content/plugins/radslide/vendor/codemirror';
+			var editor = CodeMirror.fromTextArea('radslide_add-template', {
+				height: "350px",
+				parserfile: cm_url+"/js/parsexml.js",
+				stylesheet: cm_url+"/css/xmlcolors.css",
+				path: cm_url+"/js/",
+				continuousScanning: 500,
+				lineNumbers: false
 			});
+			jQuery('.CodeMirror-wrapping iframe').css('border', '1px solid #DFDFDF');
+			jQuery('.CodeMirror-wrapping iframe').css('background-color', '#FFFFFF');
+			radslide_add_toggle_setup();
 
 			// intercept button clicks
 			jQuery(".button-primary").click(function(){
@@ -132,7 +141,7 @@ function radslide_slideshows_populate() {
 
 				// add slideshow button
 				if(id == 'radslide_add') {
-					jQuery('#radslide_add-template').html(bespin_editor.value);
+					jQuery('#radslide_add-template').html(editor.getCode());
 					jQuery("#radslide_loading").show();
 					radslide_slideshows_add();
 				}
