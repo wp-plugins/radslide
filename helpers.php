@@ -18,13 +18,15 @@ function radslide_helper_db_slide() {
 // add jquery to head, if needed
 function radslide_head() {
 	global $wpdb;
-	?><script type="text/javascript">jQuery(function(){<?php
-	$table_name = radslide_helper_db_slideshow();
-	$slideshow_rows = $wpdb->get_results("SELECT * FROM $table_name");
-	foreach($slideshow_rows as $slideshow_row) {
-		?>jQuery("#radslide-<?php echo($slideshow_row->id) ?>").cycle(<?php echo(stripslashes($slideshow_row->cycle_options)); ?>); <?php
-	}
-	?>});</script>	<?php
+        ?><script type="text/javascript">jQuery(window).load(function() { 
+                  jQuery(function(){<?php
+	          $table_name = radslide_helper_db_slideshow();
+	          $slideshow_rows = $wpdb->get_results("SELECT * FROM $table_name");
+	          foreach($slideshow_rows as $slideshow_row) { ?>
+                    jQuery("#radslide-<?php echo($slideshow_row->id) ?>").cycle(<?php echo(stripslashes($slideshow_row->cycle_options)); ?>); <?php
+	          }
+              ?>})
+        });</script>	<?php
 }
 
 // media api scripts and styles
@@ -39,7 +41,7 @@ function radslide_media_api_styles() {
 }
 
 function radslide_rd_credit() {
-	?><p style="margin-top:100px">&copy; radSLIDE is developed and maintained by <a href="http://github.com/micahflee/" target="_blank">Micah Lee</a> at <a href="http://radicaldesigns.org/" target="_blank">Radical Designs</a> and is happily released under the <a href="http://www.gnu.org/licenses/gpl-2.0.html" target="_blank">GLP2 License</a>.</p><?php
+	echo '<div class="credit">&copy; radSLIDE was originally developed by <a href="http://github.com/micahflee/" target="_blank">Micah Lee</a> and is maintained by <a href="http://radicaldesigns.org/" target="_blank" style="text-decoration: none;"><span style="font-size: 12px; font-family: sans-serif;color:#000000;">radical</span><span style="color: #fb6e27; letter-spacing: 1px;font-size:10px;  font-family: sans-serif;font-weight: bold;">DESIGNS</span></a>. It has been happily released under the <a href="http://www.gnu.org/licenses/gpl-2.0.html" target="_blank">GLP2 License</a>.</div>';
 }
 
 ?>

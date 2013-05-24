@@ -1,0 +1,73 @@
+#radslide {
+    font-size: 14px;
+    font-weight: normal;
+    margin-right: 15px;
+}
+
+.add-slideshow {
+    float: right;
+    margin: 13px 0 !important;
+}
+
+.slideshow-box {
+    padding: 20px 20px 20px 50px;
+    width: auto;
+    color: #888888;
+    box-shadow: 0 0 3px #808080 inset, 0 0 1px #FFFFFF;
+    margin: 15px 0px;
+}
+
+.slideshow-box div {
+    float: left;
+}
+.slideshow-box .title {
+    font-size: 32px;
+    line-height: 32px;
+    font-style: italic;
+    width: 100%;
+    margin-bottom: 10px;
+}
+
+.slideshow-box .preview {
+    overflow: hidden;
+    margin-bottom: 7px;
+    width: 100%;
+    max-height: 100px;
+}
+
+.slideshow-box .preview .crop {
+    width: 100px; 
+    height: 100px; 
+    overflow: hidden;
+    padding: 10px;
+}
+
+.slideshow-box .preview img {
+    width: 100px; 
+    height: 90px; 
+}
+
+.slideshow-box .controls {
+    width: 40%;
+    margin-top: 19px;
+}
+
+.slideshow-box .codes {
+    margin-right: 15px;
+}
+
+.clear {
+    clear: both;
+    float: none !important;
+}
+
+.credit {
+    position: absolute;
+}
+input#radslide_add_showform {
+  float: left;
+}
+#add-new-slide {
+  margin-bottom: 20px;
+}
+

@@ -16,7 +16,7 @@ function  radslide_setup_image_pickers() {
 			image_id = '#radslide_update-image-'+row_id;
 			image_url_id = '#radslide_update-image_url-'+row_id;
 		}
-
+		html = "<div>"+html+"</div>";
 		imgurl = jQuery('img',html).attr('src');
 		jQuery(image_id).attr('src', imgurl);
 		jQuery(image_url_id).val(imgurl);

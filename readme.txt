@@ -3,8 +3,9 @@ Contributors: radicaldesigns
 Donate link: http://radicaldesigns.org/
 Tags: slideshow, jquery cycle
 Requires at least: 3.0
-Tested up to: 3.0.1
-Stable tag: 1.0.1
+Tested up to: 3.5.1
+Stable tag: 1.2
+License: GPLv2 
 
 A javascript slideshow plugin that supports multiple slideshows and uses jQuery Cycle.
 
@@ -30,11 +31,19 @@ Create new slideshows and add images to them
 
 Add [[radslide 1]] in your page or post, replacing 1 with the id of your slideshow
 
+Use CSS to style and customize
+
 == Screenshots ==
 
 1. Managing a slideshow
 
 == Changelog ==
+
+= 1.1 =
+* Created a slideshow overview with thumbnails
+* Upgraded jQuery Cycle to 3.0.2 (19-APR-2013)
+* UI changes and fixes
+* Fixed bug where image URL was not saving correctly
 
 = 1.0.1 =
 * Made the HTML editor better
@@ -43,4 +52,10 @@ Add [[radslide 1]] in your page or post, replacing 1 with the id of your slidesh
 
 = 1.0 =
 * In the beginning...
+
+
+== TODO ==
+
+* Fix admin image displays to use thumbnails
+* Consider Cycle 2 to support responsive
 

@@ -1,13 +1,19 @@
 <?php
 
+// add ajax actions
+add_action('wp_ajax_radslide_slides_populate', 'radslide_ajax_slides_populate');
+add_action('wp_ajax_radslide_slides_add', 'radslide_ajax_slides_add');
+add_action('wp_ajax_radslide_slides_update', 'radslide_ajax_slides_update');
+add_action('wp_ajax_radslide_slides_delete', 'radslide_ajax_slides_delete');
+
 // list of slides
 function radslide_ajax_slides_populate() {
 	global $wpdb;
 	$slideshow_row = $wpdb->get_row("SELECT * FROM ".radslide_helper_db_slideshow()." WHERE id=".(int)($_POST['radslide_slideshow_id']));
 	?>
 	<input type="hidden" id="radslide_slideshow_id" value="<?php echo($slideshow_row->id); ?>" />
-	<h2>Managing Slideshow: <?php echo($slideshow_row->name); ?></h2>
-	<input type="button" id="radslide_back_to_slideshows" class="button-primary" value="Back to Slideshows" style="margin-bottom:10px;" />
+	<?php echo radslide_make_title('Managing ' . $slideshow_row->name); ?>
+	<input type="button" id="radslide_back_to_slideshows" class="button-secondary" value="Back to Slideshows" style="margin-bottom:10px;" />
 	<?php radslide_helper_ajax_loader("radslide_back_to_slideshows_loading"); ?>
 
   <table>
@@ -30,22 +36,25 @@ function radslide_ajax_slides_populate() {
 				<td><?php echo($row->id); ?></td>
 				<td style="text-align:center">
 					<input type="hidden" class="radslide_field" id="radslide_update-image_url-<?php echo($row->id); ?>" value="<?php echo(stripslashes($row->image_url)); ?>" />
-					<?php if(!empty($row->image_url)) { ?><img src="<?php echo(stripslashes($row->image_url)); ?>" height="50" id="radslide_update-image-<?php echo($row->id); ?>" /><?php } ?>
+					<img src="<?php echo(stripslashes($row->image_url)); ?>" height="50" id="radslide_update-image-<?php echo($row->id); ?>" />
 				</td>
         <td><input type="text" class="radslide_field" id="radslide_update-title-<?php echo($row->id); ?>" value="<?php echo(stripslashes($row->title)); ?>" /></td>
         <td><input type="text" class="radslide_field" id="radslide_update-description-<?php echo($row->id); ?>" value="<?php echo(stripslashes($row->description)); ?>" /></td>
         <td><input type="text" class="radslide_field" id="radslide_update-link_url-<?php echo($row->id); ?>" value="<?php echo(stripslashes($row->link_url)); ?>" /></td>
         <td><input type="text" style="width:3em;" class="radslide_field" id="radslide_update-sort-<?php echo($row->id); ?>" value="<?php echo(stripslashes($row->sort)); ?>" /></td>
         <td style="text-align:center">
-					<input type="button" class="button-primary radslide_image_picker" id="radslide_image_picker-<?php echo($row->id); ?>" value="Choose Image" />
-          <input type="submit" class="button-primary" value="Delete" id="radslide_delete-<?php echo($row->id); ?>" />
+					<input type="button" class="button-secondary radslide_image_picker" id="radslide_image_picker-<?php echo($row->id); ?>" value="Choose Image" />
+          <input type="submit" class="button-secondary" value="Delete" id="radslide_delete-<?php echo($row->id); ?>" />
         </td>
         <td><?php radslide_helper_ajax_loader("radslide_loading-".$row->id); ?></td>
       </tr>
       <?php
     }
     ?>
-    <tr><td colspan="8"><div style="background-color:#999999;height:1px;margin:8px 0;"></div></td></tr>
+    <tr><td colspan="8" style="text-align: right;">
+<p><?php radslide_helper_ajax_loader("radslide_loading"); ?> <input type="button" class="button-primary" value="Save Changes" id="radslide_update" /></p>
+<div style="background-color:#999999;height:1px;margin:30x 0 8px 0;"></div></td></tr>
+<table id="add-new-slide"><tr><td colspan="8"><h2>Add New Slide</h2></td></tr> 
 		<tr id="radslide_add_row">
 			<td></td>
  			<td style="text-align:center">
@@ -57,14 +66,13 @@ function radslide_ajax_slides_populate() {
       <td><input type="text" id="radslide_add-link_url" value="http://" /></td>
       <td><input type="text" style="width:3em;" id="radslide_add-sort" value="0" /></td>
       <td style="text-align:center;">
-				<input type="button" class="button-primary radslide_image_picker" id="radslide_image_picker-add" value="Choose Image" />
-        <input type="button" class="button-primary" value="Add Slide" id="radslide_add" />
+				<input type="button" class="button-secondary radslide_image_picker" id="radslide_image_picker-add" value="Choose Image" />
+        <input type="button" class="button-secondary" value="Add Slide" id="radslide_add" />
       </td>
-			<td><?php radslide_helper_ajax_loader("radslide_loading"); ?></td>
+			<td><?php radslide_helper_ajax_loader("radslide_add"); ?> </td>
     </tr>
 	</table>
-  <p><input type="button" class="button-primary" value="Save Changes" id="radslide_update" /></p>
-	<script type="text/javascript">radslide_setup_image_pickers();</script>
+  	<script type="text/javascript">radslide_setup_image_pickers();</script>
   <?php
   exit();
 }
@@ -98,10 +106,5 @@ function radslide_ajax_slides_delete() {
   $wpdb->query("DELETE FROM ".radslide_helper_db_slide()." WHERE id='".(int)($_POST['radslide_id'])."'");
 }
 
-// add ajax actions
-add_action('wp_ajax_radslide_slides_populate', 'radslide_ajax_slides_populate');
-add_action('wp_ajax_radslide_slides_add', 'radslide_ajax_slides_add');
-add_action('wp_ajax_radslide_slides_update', 'radslide_ajax_slides_update');
-add_action('wp_ajax_radslide_slides_delete', 'radslide_ajax_slides_delete');
 
 ?>

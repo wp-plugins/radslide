@@ -43,4 +43,11 @@ function radslide_insert_slideshow($content) {
 }
 add_action('the_content', 'radslide_insert_slideshow');
 
+function admin_register_head() {
+        $siteurl = get_option('siteurl');
+            $url = $siteurl . '/wp-content/plugins/' . basename(dirname(__FILE__)) . '/css/radstyles.css';
+            echo "<link rel='stylesheet' type='text/css' href='$url' />\n";
+}
+add_action('admin_head', 'admin_register_head');
+
 ?>

@@ -29,7 +29,7 @@ function radslide_admin_styles() {
 }
 function radslide_scripts() {
 	wp_enqueue_script('jquery');
-	wp_register_script('jquery.cycle', get_option('siteurl').'/wp-content/plugins/radslide/vendor/jquery.cycle.all.min.js"', array('jquery'));
+	wp_register_script('jquery.cycle', get_option('siteurl').'/wp-content/plugins/radslide/vendor/jquery.cycle.all.js"', array('jquery'));
 	wp_enqueue_script('jquery.cycle');
 }
 
