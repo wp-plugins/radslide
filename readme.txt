@@ -17,6 +17,8 @@ radSLIDE was developed by RadicalDesigns as a way to make updating a javascript 
 
 Setup and customization of the display may require a knowledge of HTML and CSS. A working knowledge of the amazing jQuery cycle plugin, which it depends on, is also helpful.
 
+Developers find radslide on GitHub: https://github.com/radicaldesigns/radslide
+
 == Installation ==
 
 To install and configure:
@@ -39,7 +41,7 @@ Use CSS to style and customize
 
 == Changelog ==
 
-= 1.1 =
+= 2.1 =
 * Created a slideshow overview with thumbnails
 * Upgraded jQuery Cycle to 3.0.2 (19-APR-2013)
 * UI changes and fixes
