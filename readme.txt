@@ -4,7 +4,7 @@ Donate link: http://radicaldesigns.org/
 Tags: slideshow, jquery cycle
 Requires at least: 3.0
 Tested up to: 3.5.1
-Stable tag: 1.2
+Stable tag: 1.2 
 License: GPLv2 
 
 A javascript slideshow plugin that supports multiple slideshows and uses jQuery Cycle.

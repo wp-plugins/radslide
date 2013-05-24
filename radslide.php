@@ -3,9 +3,9 @@
  * Plugin Name: radSLIDE
  * Plugin URI: http://radicaldesigns.org/wordpress-plugin-radslide
  * Description: A javascript slideshow plugin that supports multiple slideshows and uses jQuery Cycle
- * Version: 1.0.1
+ * Version: 2.1
  * Author: Micah Lee <micah@radicaldesigns.org>
- * Author URI: http://github.com/micahflee
+ * Author URI: https://github.com/radicaldesigns/radslide 
  * License: GPL2
  * */
 
