@@ -3,7 +3,7 @@ Contributors: radicaldesigns
 Donate link: http://radicaldesigns.org/
 Tags: slideshow, jquery cycle
 Requires at least: 3.0
-Tested up to: 3.5.1
+Tested up to: 4.2.1
 Stable tag: 1.2 
 License: GPLv2 
 
